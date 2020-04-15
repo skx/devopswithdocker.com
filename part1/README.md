@@ -363,6 +363,6 @@ Launch it, and test it:
 $ docker run -d -p3000:3000 rails
 $ curl http://127.0.0.1:3000/
 ..
-            <button class="btn btn-info btn-outline-dark" type="submit">Press here</button>
+    <h1>New Press</h1>
 ..
 ```

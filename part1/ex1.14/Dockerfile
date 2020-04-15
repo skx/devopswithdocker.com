@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/ruby
-FROM ruby:2.6.6
+FROM ruby:2.6.0
 
 # Setup working directory
 WORKDIR /app
@@ -19,6 +19,9 @@ RUN cd /app/rails-example-project && bundle install
 # Setup the initial DB
 RUN cd /app/rails-example-project && rails db:migrate
 
+# Run in the cloned repo
+WORKDIR /app/rails-example-project
+
 ENTRYPOINT ["rails"]
 # command represents an argument list for the entrypoint
-CMD ["serve"]
+CMD ["server"]
