@@ -316,3 +316,27 @@ Finally open http://127.0.0.1:5000/, and click the button which, when clicked, s
 * Exercise 1.12: Working!
 
 (Note: Explicitly setup both the browser and the environment variables to use `127.0.0.1`, since `localhost` resulted in CORS issues.)
+
+
+
+## Exercise 1.13
+
+* Create a Dockerfile for a Java-based application.
+
+The created Dockerfile is [ex1.13/Dockerfile](ex1.13/Dockerfile).
+
+Build it:
+
+```
+cd ex1.13 && docker build -t spring .
+```
+
+Launch it, and test it:
+
+```
+$ docker run -d -p8080:8080 spring
+$ curl http://127.0.0.1:8080/
+..
+            <button class="btn btn-info btn-outline-dark" type="submit">Press here</button>
+..
+```
