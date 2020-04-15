@@ -340,3 +340,29 @@ $ curl http://127.0.0.1:8080/
             <button class="btn btn-info btn-outline-dark" type="submit">Press here</button>
 ..
 ```
+
+
+
+
+
+## Exercise 1.14
+
+* Create a Dockerfile for a Rails-based application.
+
+The created Dockerfile is [ex1.14/Dockerfile](ex1.14/Dockerfile).
+
+Build it:
+
+```
+cd ex1.14 && docker build -t rails .
+```
+
+Launch it, and test it:
+
+```
+$ docker run -d -p3000:3000 rails
+$ curl http://127.0.0.1:3000/
+..
+            <button class="btn btn-info btn-outline-dark" type="submit">Press here</button>
+..
+```
