@@ -3,14 +3,15 @@ FROM ubuntu:16.04
 WORKDIR /webapp
 
 # install dependencies
-RUN apt-get update && apt-get install -y curl git-core nodejs npm
+RUN apt-get update && apt-get install -y curl git-core
+
+# Install node/npm
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get update && apt-get install -y nodejs
 
 #
 # Check the installation of node/npm
-#
-# NOTE: nodejs installs binary as "nodejs" not "node".
-#
-RUN nodejs -v
+RUN node -v
 RUN npm -v
 
 # Install the webapp.
