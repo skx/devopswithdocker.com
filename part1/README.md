@@ -261,3 +261,22 @@ $ curl http://127.0.0.1:5000/
   </body>
 </html>
 ```
+
+
+## Exercise 1.11
+
+* Create a Dockerfile to expose an application which is a HTTP-server on :8000.
+
+See the [ex1.11/Dockerfile](ex1.11/Dockerfile), which can be executed like so:
+
+```
+$ cd ex1.11
+$ docker build -t backend .
+$ touch logs.txt
+$ docker run -d -v $(pwd)/logs.txt:/webserver/backend-example-docker/logs.txt -p 8000:8000 backend
+$ curl http://127.0.0.1:8000/
+Port configured correctly, generated message in logs.txt
+$ cat logs.txt
+4/15/2020, 9:38:09 AM: Connection received in root
+$ cat logs.txt
+```

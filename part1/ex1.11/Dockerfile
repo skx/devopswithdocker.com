@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
-WORKDIR /webapp
+WORKDIR /webserver
 
-# install dependencies
+# Install dependencies
 RUN apt-get update && apt-get install -y curl git-core
 
 # Install node/npm
@@ -13,14 +13,14 @@ RUN apt-get update && apt-get install -y nodejs
 RUN node -v
 RUN npm -v
 
-# Install the application.
-RUN git clone https://github.com/docker-hy/frontend-example-docker.git
+# Install the project.
+RUN git clone https://github.com/docker-hy/backend-example-docker.git
 
 # Setup depedencies
-RUN cd frontend-example-docker && npm install
+RUN cd backend-example-docker && npm install
 
 # Expose the port
-EXPOSE 5000
+EXPOSE 8000
 
 # When container is started start node
-CMD cd frontend-example-docker && npm start
+CMD cd backend-example-docker && npm start
