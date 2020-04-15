@@ -187,23 +187,19 @@ Note there are no instructions, but we can guess :)
 ```
 $ touch logs.txt
 $ docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
-(node:1) ExperimentalWarning: The fs.promises API is experimental
+...
 Wrote to file /usr/app/logs.txt
 Wrote to file /usr/app/logs.txt
-Wrote to file /usr/app/logs.txt
-Wrote to file /usr/app/logs.txt
-Wrote to file /usr/app/logs.txt
-Wrote to file /usr/app/logs.txt
-Wrote to file /usr/app/logs.txt
+..
 Wrote to file /usr/app/logs.txt
 Wrote to file /usr/app/logs.txt
 ^C
 ```
 
-Now we can see the secret message:
+Now we can see the secret message, on the host-system:
 
 ```
-cat logs.txt
+$ cat logs.txt
 Wed, 15 Apr 2020 08:50:35 GMT
 Wed, 15 Apr 2020 08:50:38 GMT
 Wed, 15 Apr 2020 08:50:41 GMT
@@ -233,4 +229,21 @@ Show it worked:
 ```
 $ curl http://localhost:2030/
 Ports configured correctly!!
+```
+
+
+
+## Exercise 1.10
+
+* Create a Dockerfile to expose an application which is a HTTP-server on :5000.
+
+See the [ex1.10/Dockerfile](ex1.10/Dockerfile), which can be executed like so:
+
+```
+$ cd ex1.10
+$ docker build -t frontex .
+$ docker run -p 5000:5000 -d frontex
+$ curl http://127.0.0.1:5000/
+..
+
 ```
