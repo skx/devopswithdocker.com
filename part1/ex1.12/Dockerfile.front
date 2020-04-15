@@ -17,7 +17,7 @@ RUN npm -v
 RUN git clone https://github.com/docker-hy/frontend-example-docker.git
 
 # Export the backend URI
-ENV API_URL=http://localhost:8000
+ENV API_URL=http://127.0.0.1:8000
 
 # Expose the port
 EXPOSE 5000

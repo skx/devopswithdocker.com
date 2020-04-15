@@ -311,12 +311,8 @@ $ touch logs.txt
 $ docker run -d -v $(pwd)/logs.txt:/webserver/backend-example-docker/logs.txt -p 8000:8000 backend
 ```
 
-Finally open http://127.0.0.1:5000/, and click the button which then shows:
+Finally open http://127.0.0.1:5000/, and click the button which, when clicked, shows:
 
 * Exercise 1.12: Working!
 
-Initially I was seeing:
-
-* Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/ping. (Reason: CORS header 'Access-Control-Allow-Origin' does not match 'http://localhost:5000')
-
-However I disabled CORS security testing in my browser, as I figured this wasn't part of the test :)
+(Note: Explicitly setup both the browser and the environment variables to use `127.0.0.1`, since `localhost` resulted in CORS issues.)
