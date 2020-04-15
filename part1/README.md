@@ -241,8 +241,8 @@ See the [ex1.10/Dockerfile](ex1.10/Dockerfile), which can be executed like so:
 
 ```
 $ cd ex1.10
-$ docker build -t frontex .
-$ docker run -p 5000:5000 -d frontex
+$ docker build -t front .
+$ docker run -p 5000:5000 -d front
 $ curl http://127.0.0.1:5000/
 <!DOCTYPE html>
 <html lang="en">
@@ -280,3 +280,43 @@ $ cat logs.txt
 4/15/2020, 9:38:09 AM: Connection received in root
 $ cat logs.txt
 ```
+
+
+## Exercise 1.12
+
+* Basically a repeat of the previous two exercise:
+  * Update the Dockerfile for the backend & frontend containers.
+* Click the button and show that it works.
+
+The updated Dockerfiles are here:
+
+* [ex1.12/Dockerfile.back](ex1.12/Dockerfile.back)
+* [ex1.12/Dockerfile.front](ex1.12/Dockerfile.front)
+
+The changes here were just adding the `ENV ...` lines.
+
+Now rebuild both images:
+
+```
+$ cd ex1.12
+$ docker build -f Dockerfile.back  -t backend .
+$ docker build -f Dockerfile.front -t front .
+```
+
+Start both images:
+
+```
+$ docker run -p 5000:5000 -d front
+$ touch logs.txt
+$ docker run -d -v $(pwd)/logs.txt:/webserver/backend-example-docker/logs.txt -p 8000:8000 backend
+```
+
+Finally open http://127.0.0.1:5000/, and click the button which then shows:
+
+* Exercise 1.12: Working!
+
+Initially I was seeing:
+
+* Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/ping. (Reason: CORS header 'Access-Control-Allow-Origin' does not match 'http://localhost:5000')
+
+However I disabled CORS security testing in my browser, as I figured this wasn't part of the test :)
