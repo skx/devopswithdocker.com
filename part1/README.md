@@ -366,3 +366,53 @@ $ curl http://127.0.0.1:3000/
     <h1>New Press</h1>
 ..
 ```
+
+
+## Exercise 1.15
+
+* Publish your own application, on Docker Hub.
+
+Published Dockerfile for simple application:
+
+* Application
+  * https://github.com/skx/httpd
+* Docker Hub Entry
+  * https://hub.docker.com/r/stevekemp/skx_httpd
+
+
+
+## Exercise 1.16
+
+* Publish the existing docker-image `devopsdockeruh/heroku-example` to heroku.
+* Share the result.
+
+I did that.
+
+* Pulled locally:
+  * `docker pull devopsdockeruh/heroku-example`
+* Created heroku login & installed the heroku CLI tool.
+* Did the necessary initial steps:
+  * `/opt/heroku/bin/heroku login`
+  * `/opt/heroku/bin/heroku container:login`
+* Tagged the image which was downloaded:
+  * `docker tag 5221e4b03bc7 registry.heroku.com/skx-dwd/web`
+* Pushed the image:
+  * `docker push registry.heroku.com/skx-dwd/web`
+* Started the app (?)
+  * `/opt/heroku/bin/heroku container:release -a skx-dwd web`
+
+The result was a working Rails application located at:
+
+* https://skx-dwd.herokuapp.com/
+
+
+
+## Exercise 1.17
+
+* Create an image that contains your favorite programming environment in it’s entirety.
+
+The created Dockerfile is [ex1.17/Dockerfile](ex1.17/Dockerfile), which installs the golang compiler, etc.
+
+The entry online is here:
+
+* https://hub.docker.com/r/stevekemp/skx_golang
