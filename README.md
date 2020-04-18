@@ -10,5 +10,8 @@ The course is in three parts:
   * Started Saturday 18th April.
   * Completed Saturday 18th April.
     * Time taken approximately 5 hours.
-* [ ] part3
+* [ ] [part3/](part3/)
+  * Started Sunday 19th April
+  * Completed XX
+
   * TODO
