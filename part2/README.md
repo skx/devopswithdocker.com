@@ -201,7 +201,36 @@ TODO
 
 * Add nginx to example frontend + backend.
 
-TODO
+We build upon the ex2.3, ex2.5, & ex2.6 solutions to add an nginx instance
+
+* [ex2.8/docker-compose.yml](ex2.8/docker-compose.yml])
+  * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
+  * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
+  * Obviously this builds upon the solution in [ex2.6/](ex2.6/)
+  * **Note** I didn't rename the instances, so they still refer to 2.3
+
+The changes here involve:
+
+* Launching an instance of the `nginx` container in the `docker-compose.yml` file
+* Adding the proxy rules in the `nginx.conf` file, and making it be used.
+* Changing the `API_URL` and `FRONT_URL` to use the public-URLs
+
+**NOTE**: I continue to refer to the `ex2.3-front` and `ex2.3-backend` hosts, since they've not been changed.
+
+
+Launch like so:
+
+```
+frodo ~/x/part2/ex2.8 $ docker-compose up -d
+Starting ex28_nginx_1         ... done
+Starting ex28_psql_1          ... done
+Starting ex28_redis_1         ... done
+Starting ex28_ex2-3-backend_1 ... done
+Starting ex28_ex2-3-front_1   ... done
+```
+
+Test by clicking all the buttons; they work!
+
 
 
 ## Exercise 2.9
