@@ -194,7 +194,40 @@ Testing via the browser UI shows persistence works:
 
 * Configure a machine learning project.
 
-TODO
+This was the most complicated example so far!
+
+* Build the images via [ex2.7/build-images.sh](ex2.7/build-images.sh)
+  * End result is three Docker images
+    * `ml-kurkkumopo-frontend`
+    * `ml-kurkkumopo-backend`
+    * `ml-kurkkumopo-training`
+* Then created a [ex2.7/docker-compose.yml](ex2.7/docker-compose.yml)
+  * This launches them.
+
+Launch like so:
+
+```
+frodo $ docker-compose up -d
+Creating ex27_ml-kurkkumopo-frontend_1 ... done
+Creating ex27_ml-kurkkumopo-training_1 ... done
+Creating ex27_ml-kurkkumopo-backend_1  ... done
+```
+
+Waiting forever I slowly see things being populated:
+
+```
+frodo $ watch ls images/ model/
+images/:
+cucumber_4f1827ba-994c-4ff2-b645-c91ce60c412d.jpg
+cucumber_bf055234-92b6-44e2-a948-89584162c1dc.jpg
+
+model/:
+kurkkumopotin.sav
+..
+```
+
+Opening http://127.0.0.1:3000/ I see the `React App` which does the comparison.   Cute.
+
 
 
 ## Exercise 2.8

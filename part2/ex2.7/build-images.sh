@@ -17,7 +17,6 @@ git clone https://github.com/docker-hy/ml-kurkkumopo-backend.git
 cd ml-kurkkumopo-backend
 docker build -t ml-kurkkumopo-backend .
 
-
 # training
 cd ${start}
 git clone https://github.com/docker-hy/ml-kurkkumopo-training.git
