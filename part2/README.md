@@ -203,7 +203,7 @@ TODO
 
 We build upon the ex2.3, ex2.5, & ex2.6 solutions to add an nginx instance
 
-* [ex2.8/docker-compose.yml](ex2.8/docker-compose.yml])
+* [ex2.8/docker-compose.yml](ex2.8/docker-compose.yml)
   * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
   * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
   * Obviously this builds upon the solution in [ex2.6/](ex2.6/)
@@ -239,7 +239,7 @@ Test by clicking all the buttons; they work!
 
 We build upon the ex2.3, ex2.5, ex2.6, & ex2.8 solutions to add volumes
 
-* [ex2.9/docker-compose.yml](ex2.9/docker-compose.yml])
+* [ex2.9/docker-compose.yml](ex2.9/docker-compose.yml)
   * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
   * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
   * Obviously this builds upon the solution in [ex2.6/](ex2.6/)
