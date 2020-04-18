@@ -133,7 +133,7 @@ Here we have to do two things:
 
 The solution can be found here:
 
-* [ex2.5/docker-compose.yml](ex2.5/docker-compose.yml])
+* [ex2.5/docker-compose.yml](ex2.5/docker-compose.yml)
   * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
   * Just adds the new redis-image/instance, and the environmental variable.
   * **Note** I didn't rename the instances, so they still refer to 2.3
