@@ -82,3 +82,38 @@ Port configured correctly, generated message in logs.txt
 ..
 
 ```
+
+
+## Exercise 2.4
+
+* Clone https://github.com/docker-hy/scaling-exercise
+  * Scale so it works
+
+No change required to the `docker-compose.yml` file, instead I just launched like so:
+
+```
+frodo ~/x/part2/ $ docker-compose up --scale compute=2
+Starting load-balancer              ... done
+Starting scaling-exercise_compute_1 ... done
+Starting calculator                 ... done
+Creating scaling-exercise_compute_2 ... done
+Attaching to calculator, load-balancer, scaling-exercise_compute_1, scaling-exercise_compute_2
+```
+
+From the terminal I see :
+
+```
+frodo ~/x/part2 $ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
+68945311ff7e        compute             "docker-entrypoint.s…"   About a minute ago   Up About a minute   3000/tcp                 scaling-exercise_compute_2
+9b93d9bc6731        compute             "docker-entrypoint.s…"   2 minutes ago        Up About a minute   3000/tcp                 scaling-exercise_compute_1
+906518e62997        load-balancer       "/app/docker-entrypo…"   2 minutes ago        Up About a minute   0.0.0.0:80->80/tcp       load-balancer
+b66682b8a24e        calculator          "docker-entrypoint.s…"   2 minutes ago        Up About a minute   0.0.0.0:3000->3000/tcp   calculator
+```
+
+From my browser, http://localhost:3000`, I see:
+
+```
+Your aim is to get the bottom bar to fill before the first depletes!
+Congratulations!
+```
