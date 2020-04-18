@@ -27,3 +27,58 @@ frodo $ cat logs.txt
 Sat, 18 Apr 2020 06:29:15 GMT
 Sat, 18 Apr 2020 06:29:18 GMT
 ```
+
+
+## Exercise 2.2
+
+Create a `docker-compose.yml` and use it to start the service so that you can use it with your browser.
+
+i.e. Here we configure port-binding.
+
+
+* [ex2.2/docker-compose.yml](ex2.2/docker-compose.yml)
+
+Once present:
+
+```
+frodo ~/x/part2/ex2.2 $ docker-compose up -d
+Starting ex22_ex2-2_1 ... done
+
+frodo ~/x/part2/ex2.2 $ curl http://localhost:8080/
+Ports configured correctly!!
+```
+
+
+## Exercise 2.3
+
+* Configure the backend and frontend from part 1 to work in docker-compose.
+
+Here we have to define **two** containers in the single compose file, the solution is here:
+
+* [ex2.3/docker-compose.yml](ex2.3/docker-compose.yml)
+  * This file uses the two images I created for [ex1.12](https://github.com/skx/devopswithdocker.com/tree/master/part1#exercise-112)
+  * i.e. An image named "backend" on port 8000
+  * i.e. An image named "front" on port 5000
+
+Start like so:
+
+```
+frodo ~/x/part2/ex2.3 $ docker-compose up -d
+Creating network "ex23_default" with the default driver
+Creating ex23_ex2-3-backend_1 ... done
+Creating ex23_ex2-3-front_1   ... done
+frodo ~/x/part2/ex2.3 $
+```
+
+Test like so:
+
+```
+$ curl http://127.0.0.1:5000/
+<!DOCTYPE html>
+<html lang="en">
+..
+frodo ~/x/part2/ex2.3 $ curl 127.0.0.1:8000
+Port configured correctly, generated message in logs.txt
+..
+
+```

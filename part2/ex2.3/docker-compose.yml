@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  ex2-3-front:
+    image: front
+    environment:
+      - API_URL=http://127.0.0.1:8000
+    ports:
+      - 5000:5000
+  ex2-3-backend:
+    image: backend
+    environment:
+      - FRONT_URL=http://127.0.0.1:5000
+    ports:
+      - 8000:8000
