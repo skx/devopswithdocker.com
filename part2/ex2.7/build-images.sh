@@ -8,7 +8,7 @@ start=$(pwd)
 
 # frontend
 git clone https://github.com/docker-hy/ml-kurkkumopo-frontend.git
-cd ml-kurkkumopo-frontend.git
+cd ml-kurkkumopo-frontend
 docker build -t ml-kurkkumopo-frontend .
 
 # backend
