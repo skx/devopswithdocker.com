@@ -1,5 +1,8 @@
 # Part 2
 
+My solutions to [Devops with Docker - part 2](https://devopswithdocker.com/part2/)
+
+
 
 
 ## Exercise 2.1
@@ -41,10 +44,10 @@ i.e. Here we configure port-binding.
 Once present:
 
 ```
-frodo ~/x/part2/ex2.2 $ docker-compose up -d
+frodo $ docker-compose up -d
 Starting ex22_ex2-2_1 ... done
 
-frodo ~/x/part2/ex2.2 $ curl http://localhost:8080/
+frodo $ curl http://localhost:8080/
 Ports configured correctly!!
 ```
 
@@ -63,11 +66,11 @@ Here we have to define **two** containers in the single compose file, the soluti
 Start like so:
 
 ```
-frodo ~/x/part2/ex2.3 $ docker-compose up -d
+frodo $ docker-compose up -d
 Creating network "ex23_default" with the default driver
 Creating ex23_ex2-3-backend_1 ... done
 Creating ex23_ex2-3-front_1   ... done
-frodo ~/x/part2/ex2.3 $
+frodo $
 ```
 
 Test like so:
@@ -77,7 +80,7 @@ $ curl http://127.0.0.1:5000/
 <!DOCTYPE html>
 <html lang="en">
 ..
-frodo ~/x/part2/ex2.3 $ curl 127.0.0.1:8000
+frodo $ curl 127.0.0.1:8000
 Port configured correctly, generated message in logs.txt
 ..
 
@@ -92,7 +95,7 @@ Port configured correctly, generated message in logs.txt
 No change required to the `docker-compose.yml` file, instead I just launched like so:
 
 ```
-frodo ~/x/part2/ $ docker-compose up --scale compute=2
+frodo $ docker-compose up --scale compute=2
 Starting load-balancer              ... done
 Starting scaling-exercise_compute_1 ... done
 Starting calculator                 ... done
@@ -103,7 +106,7 @@ Attaching to calculator, load-balancer, scaling-exercise_compute_1, scaling-exer
 From the terminal I see :
 
 ```
-frodo ~/x/part2 $ docker ps
+frodo $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
 68945311ff7e        compute             "docker-entrypoint.s…"   About a minute ago   Up About a minute   3000/tcp                 scaling-exercise_compute_2
 9b93d9bc6731        compute             "docker-entrypoint.s…"   2 minutes ago        Up About a minute   3000/tcp                 scaling-exercise_compute_1
@@ -133,11 +136,12 @@ The solution can be found here:
 * [ex2.5/docker-compose.yml](ex2.5/docker-compose.yml])
   * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
   * Just adds the new redis-image/instance, and the environmental variable.
+  * **Note** I didn't rename the instances, so they still refer to 2.3
 
 Start like so:
 
 ```
-frodo ~/x/part2/ex2.5 $ docker-compose up -d
+frodo $ docker-compose up -d
 Creating network "ex25_default" with the default driver
 Pulling redis (redis:)...
 latest: Pulling from library/redis
@@ -165,11 +169,14 @@ Test via the browser-button on 127.0.0.1:5000:
 We build upon the ex2.3 & ex2.5 solutions to add a postgresql instance
 
 * [ex2.6/docker-compose.yml](ex2.6/docker-compose.yml])
+  * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
+  * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
+  * **Note** I didn't rename the instances, so they still refer to 2.3
 
 Starting launches as expected:
 
 ```
-frodo ~/x/part2/ex2.6 $ docker-compose up -d
+frodo $ docker-compose up -d
 Creating ex26_ex2-3-front_1   ... done
 Creating ex26_ex2-3-backend_1 ... done
 Creating ex26_redis_1         ... done
