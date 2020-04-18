@@ -6,7 +6,9 @@ The course is in three parts:
   * Started Wednesday 15th April 2020
   * Completed Thursday 16th April 2020
     * Time taken approximately 7 hours.
-* [ ] [part2/](part2/)
+* [x] [part2/](part2/)
   * Started Saturday 18th April.
-  * Completed XXXX
+  * Completed Saturday 18th April.
+    * Time taken approximately 5 hours.
 * [ ] part3
+  * TODO
