@@ -168,7 +168,7 @@ Test via the browser-button on 127.0.0.1:5000:
 
 We build upon the ex2.3 & ex2.5 solutions to add a postgresql instance
 
-* [ex2.6/docker-compose.yml](ex2.6/docker-compose.yml])
+* [ex2.6/docker-compose.yml](ex2.6/docker-compose.yml)
   * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
   * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
   * **Note** I didn't rename the instances, so they still refer to 2.3
