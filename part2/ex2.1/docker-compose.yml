@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  ex2-1:
+    image: devopsdockeruh/first_volume_exercise
+    volumes:
+      - ./logs.txt:/usr/app/logs.txt
