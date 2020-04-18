@@ -180,3 +180,32 @@ Testing via the browser UI shows persistence works:
 
 * Enter "Foo" into Ex 2.6 field, then click "Send Message"
 * Reload page, then click "Get All Messages"
+
+
+
+## Exercise 2.7
+
+* Configure a machine learning project.
+
+TODO
+
+
+## Exercise 2.8
+
+* Add nginx to example frontend + backend.
+
+TODO
+
+
+## Exercise 2.9
+
+* Configure bind-mount/volumes for psql.
+
+TODO
+
+
+## Exercise 2.10
+
+* Ensure you can press all the buttons in the front-end (?)
+
+TODO
