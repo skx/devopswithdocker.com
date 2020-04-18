@@ -235,13 +235,86 @@ Test by clicking all the buttons; they work!
 
 ## Exercise 2.9
 
-* Configure bind-mount/volumes for psql.
+* Configure bind-mount/volumes for psql & redis
 
-TODO
+We build upon the ex2.3, ex2.5, ex2.6, & ex2.8 solutions to add volumes
+
+* [ex2.9/docker-compose.yml](ex2.9/docker-compose.yml])
+  * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
+  * Obviously this builds upon the solution in [ex2.5/](ex2.5/)
+  * Obviously this builds upon the solution in [ex2.6/](ex2.6/)
+  * Obviously this builds upon the solution in [ex2.8/](ex2.8/)
+
+The changes here were to add volumes for psql & redis:
+
+```
+..
+    volumes:
+      - redis.state:/data
+    volumes:
+      - psql.state:/var/lib/postgresql/data
+```
+
+Bring it up like so:
+
+```
+frodo $ mkdir  psql.state/ redis.state/
+frodo $ docker-compose  up -d
+Starting ex29_psql_1          ... done
+Starting ex29_ex2-3-backend_1 ... done
+Starting ex29_ex2-3-front_1   ... done
+Starting ex29_redis_1         ... done
+Starting ex29_nginx_1         ... done
+```
+
+Confirm data is stored on the host, beneath `state`
+
+```
+frodo $ docker-compose down
+Stopping ex29_ex2-3-front_1   ... done
+Stopping ex29_nginx_1         ... done
+Stopping ex29_redis_1         ... done
+Stopping ex29_psql_1          ... done
+Stopping ex29_ex2-3-backend_1 ... done
+Removing ex29_ex2-3-front_1   ... done
+Removing ex29_nginx_1         ... done
+Removing ex29_redis_1         ... done
+Removing ex29_psql_1          ... done
+Removing ex29_ex2-3-backend_1 ... done
+Removing network ex29_default
+
+frodo $ ls redis.state/
+dump.rdb
+
+frodo $ ls psql.state/
+ls: cannot open directory 'psql.state/': Permission denied
+frodo $ sudo ls psql.state/
+base	      pg_dynshmem    pg_logical    pg_replslot	 pg_stat      pg_tblspc    pg_wal		 postgresql.conf
+global	      pg_hba.conf    pg_multixact  pg_serial	 pg_stat_tmp  pg_twophase  pg_xact		 postmaster.opts
+pg_commit_ts  pg_ident.conf  pg_notify	   pg_snapshots  pg_subtrans  PG_VERSION   postgresql.auto.conf
+frodo ~/x/part2/ex2.9 $
+```
+
+**NOTE**: Permissions on the `psql.state/` directory were broken; `sudo` to the rescue.
+
 
 
 ## Exercise 2.10
 
-* Ensure you can press all the buttons in the front-end (?)
+* Some buttons may have stopped working in the frontend + backend project.
+  * Make sure that every button for exercises works.
 
-TODO
+
+__I'd already fixed this!__, in exercise 2.8.  Regardless please find the solution files beneath [ex2.10/](ex2.10).
+
+The files there are based upon those in the previous exercise, which again build from those previous solutions.
+
+* The specific change I made was to refer to the _external_ URI.
+  * In the beginning we used public URLs:
+    * `API_URL=http://127.0.0.1:8000`
+    * `FRONT_URL=http://127.0.0.1:5000`
+  * Now we're using `nginx` to proxy to the front-end/back-end containers we can use the public-endpoints:
+    * `API_URL=http://127.0.0.1/api`
+    * `FRONT_URL=http://127.0.0.1`
+
+`nginx.conf` file, etc, is the same as before.  This submission is 100% identical to my solution to ex2.8, with the addition of the volumes from ex2.9.
