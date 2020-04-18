@@ -267,7 +267,7 @@ Starting ex29_redis_1         ... done
 Starting ex29_nginx_1         ... done
 ```
 
-Confirm data is stored on the host, beneath `state`
+Confirm data is stored on the host, beneath `psql.state` & `redis.state`
 
 ```
 frodo $ docker-compose down
@@ -307,9 +307,9 @@ frodo ~/x/part2/ex2.9 $
 
 __I'd already fixed this!__, in exercise 2.8.  Regardless please find the solution files beneath [ex2.10/](ex2.10).
 
-The files there are based upon those in the previous exercise, which again build from those previous solutions.
+The files there are based upon those in the previous exercise.
 
-* The specific change I made was to refer to the _external_ URI.
+* The specific change I made was to refer to the _external_ URI for the front & backend.
   * In the beginning we used public URLs:
     * `API_URL=http://127.0.0.1:8000`
     * `FRONT_URL=http://127.0.0.1:5000`
