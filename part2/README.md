@@ -155,3 +155,28 @@ Creating ex25_redis_1         ... done
 Test via the browser-button on 127.0.0.1:5000:
 
 * Exercise 2.5: Working! It took 0.015 seconds.
+
+
+
+## Exercise 2.6
+
+* Add database to backend application too.
+
+We build upon the ex2.3 & ex2.5 solutions to add a postgresql instance
+
+* [ex2.6/docker-compose.yml](ex2.6/docker-compose.yml])
+
+Starting launches as expected:
+
+```
+frodo ~/x/part2/ex2.6 $ docker-compose up -d
+Creating ex26_ex2-3-front_1   ... done
+Creating ex26_ex2-3-backend_1 ... done
+Creating ex26_redis_1         ... done
+Creating ex26_psql_1          ... done
+```
+
+Testing via the browser UI shows persistence works:
+
+* Enter "Foo" into Ex 2.6 field, then click "Send Message"
+* Reload page, then click "Get All Messages"
