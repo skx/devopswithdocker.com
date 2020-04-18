@@ -117,3 +117,41 @@ From my browser, http://localhost:3000`, I see:
 Your aim is to get the bottom bar to fill before the first depletes!
 Congratulations!
 ```
+
+
+## Exercise 2.5
+
+* Add redis to the backend-setup
+
+Here we have to do two things:
+
+* Add a redis container.
+* Configure the backend container so it can talk to it.
+
+The solution can be found here:
+
+* [ex2.5/docker-compose.yml](ex2.5/docker-compose.yml])
+  * Obviously this builds upon the solution in [ex2.3/](ex2.3/)
+  * Just adds the new redis-image/instance, and the environmental variable.
+
+Start like so:
+
+```
+frodo ~/x/part2/ex2.5 $ docker-compose up -d
+Creating network "ex25_default" with the default driver
+Pulling redis (redis:)...
+latest: Pulling from library/redis
+123275d6e508: Pull complete
+f2edbd6a658e: Pull complete
+66960bede47c: Pull complete
+533694cb3638: Pull complete
+1dc100dcb2f1: Pull complete
+9ca9ac709269: Pull complete
+Creating ex25_ex2-3-front_1   ... done
+Creating ex25_ex2-3-backend_1 ... done
+Creating ex25_redis_1         ... done
+```
+
+Test via the browser-button on 127.0.0.1:5000:
+
+* Exercise 2.5: Working! It took 0.015 seconds.
