@@ -31,13 +31,17 @@ With the new Dockerfiles present in [ex3.1/](ex3.1/) I managed to achieve some s
 | Image     | Size  |
 | --------- | ----- |
 | backend   | 408MB |
-| front     | 408MB |
+| front     | 588MB |
 
 The changes were simple enough:
 
 * Join together the various shell-commands to remove layers.
 * Purge `git-core` / `curl` after they're used.
 
+TODO:
+
+* `apt-get clean`
+* rm -rf /usr/share/doc ? ;)
 
 
 # Exercise 3.2
@@ -59,9 +63,18 @@ TODO
 
 # Exercise 3.4
 
-* Run something as a non-root user.
+* Run our front-end and back-end images as a non-root user.
 
-TODO
+Updated dockerfiles contained in [ex3.4/](ex3.4/), with two changes:
+
+* Added the user `adduser server`
+* Added the `USER server` to the dockerfile.
+
+**NOTE**:
+
+* It would have been better to run the `git clone ..`, and similar commands, as the user.  However installing git would have required root, or sudo.
+* I was mostly thinking of the run-time due to bugs in the application, I assume we can trust the system & NPM packages (ha).
+* Plus adding these commands at the end allow me to reuse the cached image(s) from ex3.1 :)
 
 
 
