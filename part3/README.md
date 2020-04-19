@@ -112,7 +112,7 @@ After changing the base to `node:alpine` they become:
 
 * Lets do a multi-stage build for the frontend project since we’ve come so far with the application.
 
-The Dockerfile can be found in [ex3.6/](ex3.6/), which does the previous setup, but then copies the `dist/` contents into place.
+The Dockerfile can be found in [ex3.6/](ex3.6/), which largely does the same setup as previously, but then copies the `dist/` contents into place.
 
 New size is `124Mb`:
 
