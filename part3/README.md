@@ -48,7 +48,66 @@ TODO:
 
 * Let’s create our first deployment pipeline!
 
-TODO
+I logged into heroku, and created a new application named `dwd-pipeline`
+(dwd -> devops with docker).
+
+Using their console I configured commits from github to be deployed to production.  Making a commit and push resulted in a working application.
+
+```
+frodo ~/Repos/github.com/skx/httpd $ git push heroku master
+Counting objects: 29, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (28/28), done.
+Writing objects: 100% (29/29), 4.24 KiB | 0 bytes/s, done.
+Total 29 (delta 10), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Go app detected
+remote: -----> Fetching stdlib.sh.v8... done
+remote: ----->
+remote:        Detected go modules via go.mod
+remote: ----->
+remote:        Detected Module Name: github.com/skx/httpd
+remote: ----->
+remote:  !!    The go.mod file for this project does not specify a Go version
+remote:  !!
+remote:  !!    Defaulting to go1.12.17
+remote:  !!
+remote:  !!    For more details see: https://devcenter.heroku.com/articles/go-apps-with-modules#build-configuration
+remote:  !!
+remote: -----> Using go1.12.17
+remote: -----> Determining packages to install
+remote:
+remote:        Detected the following main packages to install:
+remote:        		github.com/skx/httpd
+remote:
+remote: -----> Running: go install -v -tags heroku github.com/skx/httpd
+remote: github.com/skx/httpd
+remote:
+remote:        Installed the following binaries:
+remote:        		./bin/httpd
+remote:
+remote:        Created a Procfile with the following entries:
+remote:        		web: bin/httpd
+remote:
+remote:        If these entries look incomplete or incorrect please create a Procfile with the required entries.
+remote:        See https://devcenter.heroku.com/articles/procfile for more details about Procfiles
+remote:
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 3.7M
+remote: -----> Launching...
+remote:        Released v4
+remote:        https://dwd-pipeline.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/dwd-pipeline.git
+ * [new branch]      master -> master
+```
+
 
 
 
