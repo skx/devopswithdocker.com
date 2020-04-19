@@ -7,10 +7,36 @@ My solutions to [Devops with Docker - part 3](https://devopswithdocker.com/part3
 
 ## Exercise 3.1
 
-* Take the backend/frontend images from [ex2.10](https://github.com/skx/devopswithdocker.com/tree/master/part2#exercise-210) and make smaller.
+* Take the backend/frontend images, and make smaller.
 
-TODO
+In exercise [1.12](https://github.com/skx/devopswithdocker.com/tree/master/part1/ex1.12) I made images for the front-end and back-end:
 
+```
+$ cd part1/ex1.12
+$ docker build -f Dockerfile.back  -t backend .
+$ docker build -f Dockerfile.front -t front .
+```
+
+After doing that I see the following image-sizes:
+
+| Image     | Size  |
+| --------- | ----- |
+| backend   | 411MB |
+| front     | 590MB |
+
+(Via `docker images ls -s`)
+
+With the new Dockerfiles present in [ex3.1/](ex3.1/) I managed to achieve some space-saving:
+
+| Image     | Size  |
+| --------- | ----- |
+| backend   | 408MB |
+| front     | 408MB |
+
+The changes were simple enough:
+
+* Join together the various shell-commands to remove layers.
+* Purge `git-core` / `curl` after they're used.
 
 
 
