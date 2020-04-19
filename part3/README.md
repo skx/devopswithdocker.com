@@ -112,7 +112,16 @@ After changing the base to `node:alpine` they become:
 
 * Lets do a multi-stage build for the frontend project since we’ve come so far with the application.
 
-TODO
+The Dockerfile can be found in [ex3.6/](ex3.6/), which does the previous setup, but then copies the `dist/` contents into place.
+
+New size is `124Mb`:
+
+```
+frodo ~/x/part3/ex3.6 $ docker image ls | head -n 2
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+frontend            latest              c906d1578b96        59 seconds ago      124MB
+```
+
 
 
 
