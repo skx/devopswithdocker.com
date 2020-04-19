@@ -131,8 +131,19 @@ frontend            latest              c906d1578b96        59 seconds ago      
 
 In my case I'll use the [http-server](https://github.com/skx/httpd) I hacked up, which has a Dockerfile published for [exercise 1.15](https://github.com/skx/devopswithdocker.com/tree/master/part1#exercise-115).
 
-TODO
+Since this is a Golang binary we can build it nice and neatly via just copying the binary.
 
+* [ex3.7/](ex3.7/) contains the Dockerfile
+
+The size is small:
+
+```
+frodo ~/x/part3 $ docker image ls | head -n2
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+httpd               latest              fb3823d6dc78        29 seconds ago       122MB
+```
+
+The image has a dedicated user to run the server as, and while it could have been smaller there was the issue of deploying the binary with libc/library differences so the run-time layer is Debian Buster to match the golang-based build-layer.
 
 
 
