@@ -1,0 +1,24 @@
+FROM node:alpine
+
+WORKDIR /webserver
+
+# Install dependencies
+RUN apk update && apk add git
+
+# Install the project.
+RUN git clone https://github.com/docker-hy/backend-example-docker.git
+
+# Save space
+RUN apk del git
+
+# Expose the port
+EXPOSE 8000
+
+# Export the front-end URL
+ENV FRONT_URL=http://127.0.0.1/
+
+# Setup depedencies
+RUN cd backend-example-docker && npm install
+
+# When container is started start node
+CMD cd backend-example-docker && npm start

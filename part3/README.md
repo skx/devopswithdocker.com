@@ -81,10 +81,29 @@ Updated dockerfiles contained in [ex3.4/](ex3.4/), with two changes:
 
 # Exercise 3.5
 
-* Take the backend/frontend images from [ex2.10](https://github.com/skx/devopswithdocker.com/tree/master/part2#exercise-210) and use the NodeJS base image instead.
-  * Will make smaller.
+* Use the NodeJS base image instead for our front-end and back-end images.
 
-TODO
+Resulting dockerfiles contained in [ex3.5/](ex3.5/)
+
+Initial sizes after ex3.4:
+
+| Image  | Size  |
+| ------ | ----- |
+| front  | 781MB |
+| backend| 434MB |
+
+After changing the base to `node:alpine` they become:
+
+| Image  | Size  |
+| ------ | ----- |
+| front  | 345Mb |
+| backend| 165MB |
+
+
+* I didn't need to install node, obviously.
+* Still added, & removed, `git` to clone the projects.
+* The biggest change here is probably that I didn't have the recursive chown ..
+  * As this is running as root.  Not the `server` user.
 
 
 
