@@ -37,5 +37,11 @@ COPY --from=build /build/frontend-example-docker/dist/ /app
 # Now we need a server.  Sigh
 RUN npm install -g serve
 
+# Add the user and give it all the permissions
+RUN adduser -S server && chown -R server /app
+
+# We'll run as this user name.
+USER server
+
 # When container is started start node
 CMD serve -s -l 8000
