@@ -383,6 +383,4 @@ This image _could_ have been smaller there was the issue of deploying the binary
 
 # Exercise 3.8
 
-* Diagram drawing.  (WTF?)
-
-TODO
+* Diagram drawing.
