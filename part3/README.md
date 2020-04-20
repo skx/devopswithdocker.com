@@ -110,6 +110,12 @@ To https://git.heroku.com/dwd-pipeline.git
  * [new branch]      master -> master
 ```
 
+The end result is that pushes to github, or directly to the heroku origin (as defined in `.git/config`) trigger a deployment.
+
+The application is visible here:
+
+* https://dwd-pipeline.herokuapp.com/
+
 
 
 
