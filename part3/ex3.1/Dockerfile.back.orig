@@ -3,13 +3,18 @@ FROM ubuntu:16.04
 WORKDIR /webserver
 
 # Install dependencies
-RUN apt-get update && apt-get install -y curl git-core && curl -sL https://deb.nodesource.com/setup_10.x | bash && apt-get update && apt-get install -y nodejs
+RUN apt-get update && apt-get install -y curl git-core
+
+# Install node/npm
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get update && apt-get install -y nodejs
+
+# Check the installation of node/npm
+RUN node -v
+RUN npm -v
 
 # Install the project.
 RUN git clone https://github.com/docker-hy/backend-example-docker.git
-
-# Remove things we added, clean state-files from apt, kill git history.
-RUN apt-get purge -y --auto-remove git-core curl && apt-get clean && rm -rf /webserver/backend-example-docker/.git
 
 # Expose the port
 EXPOSE 8000

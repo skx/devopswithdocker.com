@@ -9,39 +9,41 @@ My solutions to [Devops with Docker - part 3](https://devopswithdocker.com/part3
 
 * Take the backend/frontend images, and make smaller.
 
-In exercise [1.12](https://github.com/skx/devopswithdocker.com/tree/master/part1/ex1.12) I made images for the front-end and back-end:
+In exercise 1.12 I'd already made images for the front-end and back-end, so copied those as a starting point:
 
 ```
-$ cd part1/ex1.12
-$ docker build -f Dockerfile.back  -t backend .
-$ docker build -f Dockerfile.front -t front .
+$ cd ex3.1/
+$ docker build -f Dockerfile.back.orig  -t backend .
+$ docker build -f Dockerfile.front.orig -t front .
 ```
 
 After doing that I see the following image-sizes:
 
-| Image     | Size  |
-| --------- | ----- |
-| backend   | 411MB |
-| front     | 590MB |
+| File                  | Image     | Size  |
+| --------------------- | --------- | ----- |
+| Dockerfile.back.orig  | backend   | 411MB |
+| Dockerfile.front.orig | front     | 590MB |
 
 (Via `docker images ls -s`)
 
-With the new Dockerfiles present in [ex3.1/](ex3.1/) I managed to achieve some space-saving:
+With the new Dockerfiles present in [ex3.1/](ex3.1/) I managed to achieve a __small__ amount of space-saving:
 
-| Image     | Size  |
-| --------- | ----- |
-| backend   | 408MB |
-| front     | 588MB |
+
+| File                  | Image     | Size  | Saving |
+| --------------------- | --------- | ----- | ------ |
+| Dockerfile.back       | backend   | 588Mb |    2Mb |
+| Dockerfile.fron       | front     | 408Mb |    3Mb |
 
 The changes were simple enough:
 
 * Join together the various shell-commands to remove layers.
 * Purge `git-core` / `curl` after they're used.
+* Remove the `apt` state-files.
+* Remove `.git/` contents from the repository we cloned.
 
-TODO:
+**NOTE**: For sneaky extra points I could do something like `rm -rf /usr/share/doc`, but that felt like cheating.
 
-* `apt-get clean`
-* rm -rf /usr/share/doc ? ;)
+
 
 
 # Exercise 3.2
@@ -49,7 +51,7 @@ TODO:
 * Let’s create our first deployment pipeline!
 
 I logged into heroku, and created a new application named `dwd-pipeline`
-(dwd -> devops with docker).
+(dwd -> devops with docker, used the same prefix in part2).
 
 Using their console I configured commits from github to be deployed to production.  Making a commit and push resulted in a working application.
 
