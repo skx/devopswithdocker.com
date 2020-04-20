@@ -24,7 +24,7 @@ After doing that I see the following image-sizes:
 | Dockerfile.back.orig  | backend   | 411MB |
 | Dockerfile.front.orig | front     | 590MB |
 
-(Via `docker images ls`)
+(Via `docker image ls`)
 
 With the new Dockerfiles present in [ex3.1/](ex3.1/) I managed to achieve a __small__ amount of space-saving:
 
