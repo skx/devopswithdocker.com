@@ -17,6 +17,12 @@ EXPOSE 8000
 # Export the front-end URL
 ENV API_URL=http://127.0.0.1/api
 
+# Add the user and give it all the permissions
+RUN adduser -S server && chown -R server /webserver
+
+# We'll run as this user name.
+USER server
+
 # Setup depedencies
 RUN cd frontend-example-docker && npm install
 

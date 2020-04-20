@@ -163,19 +163,16 @@ After changing the base to `node:alpine` they become:
 
 | Image  | Size  |  Saving |
 | ------ | ----- | ------- |
-| front  | 345Mb |   436Mb |
-| backend| 165MB |   269Mb |
+| front  | 346Mb |   435Mb |
+| backend| 166MB |   268Mb |
 
 
 * I didn't need to install node, obviously.
-* Still added, & removed, `git` to clone the projects.
-* The biggest change here is probably that I didn't have the recursive chown ..
-  * As this is running as root.  Not the `server` user.
-
-TODO:
-
-* Re-Add the user and chown.
-
+  * Still added, & removed, `git` to clone the projects.
+* I still added the `server` user for both images, and make them run under it.
+  * This time I ran the `chown` before the npm install.
+  * **NOTE**: Had to change the adduser, via reference:
+    * https://github.com/gliderlabs/docker-alpine/issues/38
 
 
 
