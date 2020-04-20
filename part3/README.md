@@ -182,19 +182,21 @@ After changing the base to `node:alpine` they become:
 
 The Dockerfile can be found in [ex3.6/](ex3.6/), which largely does the same setup as previously, but then copies the `dist/` contents into place.
 
-New size is `124Mb`:
+I made sure I readded the user to run the server, for completeness.
 
 ```
-frodo ~/x/part3/ex3.6 $ docker image ls | head -n 2
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-frontend            latest              c906d1578b96        59 seconds ago      124MB
+frodo $ docker build -t front-new .
+Sending build context to Docker daemon  3.072kB
+..
 ```
 
-TODO:
+The new/final size is `127Mb`:
 
-* Re-Add the user and chown.
+```
+$ docker image ls front-new | awk '{print $NF}' | tail -n1
+127MB
 
-
+```
 
 
 # Exercise 3.7
