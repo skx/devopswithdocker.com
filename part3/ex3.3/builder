@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Take an argument which is an URL to clone, clone the repository,
+# then build/tag/push to dockerhub.
+#
+# Steve
+# --
+# https://steve.fi/
+#
+
+
+if [ -z "$1" ] ; then
+   echo "Usage: $0 repository.to.clone.git"
+   exit 1
+fi
+
+#
+#  Create the name for the image
+#
+name=$(echo "$1" | awk -F/ '{print $NF}' | awk -F. '{print $1}')
+name="stevekemp/auto-${name}"
+
+#
+#  Show what we're gonna tag/make
+#
+echo "URL ${1} will be tagged as stevekemp/${name}"
+
+#
+#
+#  Create a temporary directory and clone into it
+#
+dir=$(mktemp -d)
+cd $dir
+
+#
+# Clone the repository
+#
+git clone "$1" ${dir}/git/
+
+#
+# Change into the direcotry
+#
+cd ${dir}/git
+
+#
+# Build the image
+#
+docker build -t ${name} .
+
+#
+# Push it to the dockerhub
+#
+docker push ${name}
