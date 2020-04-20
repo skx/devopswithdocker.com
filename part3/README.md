@@ -134,8 +134,8 @@ TODO
 
 Updated dockerfiles contained in [ex3.4/](ex3.4/), with two changes:
 
-* Added the user `adduser server`
-* Added the `USER server` to the dockerfile.
+* Added the user to run the server `adduser server`
+* Added the `USER server` to the dockerfile to make that user run later commands.
 
 **NOTE**:
 
@@ -161,16 +161,20 @@ Initial sizes after ex3.4:
 
 After changing the base to `node:alpine` they become:
 
-| Image  | Size  |
-| ------ | ----- |
-| front  | 345Mb |
-| backend| 165MB |
+| Image  | Size  |  Saving |
+| ------ | ----- | ------- |
+| front  | 345Mb |   436Mb |
+| backend| 165MB |   269Mb |
 
 
 * I didn't need to install node, obviously.
 * Still added, & removed, `git` to clone the projects.
 * The biggest change here is probably that I didn't have the recursive chown ..
   * As this is running as root.  Not the `server` user.
+
+TODO:
+
+* Re-Add the user and chown.
 
 
 
@@ -188,6 +192,10 @@ frodo ~/x/part3/ex3.6 $ docker image ls | head -n 2
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 frontend            latest              c906d1578b96        59 seconds ago      124MB
 ```
+
+TODO:
+
+* Re-Add the user and chown.
 
 
 
@@ -210,7 +218,9 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 httpd               latest              fb3823d6dc78        29 seconds ago       122MB
 ```
 
-The image has a dedicated user to run the server as, and while it could have been smaller there was the issue of deploying the binary with libc/library differences so the run-time layer is Debian Buster to match the golang-based build-layer.
+The image has a dedicated `server`-user which launches the application.
+
+This image _could_ have been smaller there was the issue of deploying the binary with libc/library differences so the run-time layer is Debian Buster to match the golang-based build-layer.  (i.e. This failed when I ran on alpine.)
 
 
 
