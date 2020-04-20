@@ -384,3 +384,6 @@ This image _could_ have been smaller there was the issue of deploying the binary
 # Exercise 3.8
 
 * Diagram drawing.
+
+> "To get a passing grade you have to do every exercise, except you can skip one exercise for each part."
+> This is gonna be my sole skipped exercise.
